@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class RailwayManagementSystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+//        private static List<Passenger> passengersCollection = new ArrayList<>();
 
         // Create stations
         System.out.print("Enter the name of Station A: ");
@@ -93,6 +94,19 @@ public class RailwayManagementSystem {
 
         return new Passenger(name, contactNumber);
     }
+    public static void displayCustomerData() {
+        Passenger passenger = new Passenger();
+        System.out.println("\nCustomer Data:");
+
+        if (passenger.passengersCollection.isEmpty()) {
+            System.out.println("No passengers added yet.");
+        } else {
+            for (Passenger customer : passenger.passengersCollection) {
+                System.out.println("Name: " + customer.getName() +
+                        ", Contact Number: " + customer.getContactNumber());
+            }
+        }
+    }
 
     private static void displayTicketInformation(Ticket ticket) {
         System.out.println("Train Number: " + ticket.getTrain().getTrainNumber());
@@ -101,5 +115,10 @@ public class RailwayManagementSystem {
         System.out.println("To Station: " + ticket.getToStation().getName());
         System.out.println("Journey Date: " + ticket.getJourneyDate());
         System.out.println("Price: $" + ticket.getPrice());
+    }
+    private static List<Passenger> PassengersCollection = new ArrayList<>();
+
+    public static List<Passenger> getCustomersCollection() {
+        return PassengersCollection;
     }
 }

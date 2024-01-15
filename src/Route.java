@@ -1,3 +1,5 @@
+
+
 import java.util.List;
 
 class Route {
@@ -6,6 +8,13 @@ class Route {
     public Route(List<Station> stations) {
         this.stations = stations;
     }
+    public List<Station> getStations() {
+        return stations;
+    }
+
+
+
+
 
     // Getters and setters...
 }

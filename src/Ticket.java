@@ -1,4 +1,3 @@
-import java.nio.file.Path;
 import java.time.LocalDate;
 
 class Ticket {
@@ -8,6 +7,7 @@ class Ticket {
     private Station toStation;
     private LocalDate journeyDate;
     private double price;
+     private int NumOfTickets;
 
     public Ticket(Train train, Passenger passenger, Station fromStation, Station toStation, LocalDate journeyDate, double price) {
         this.train = train;
@@ -41,7 +41,9 @@ class Ticket {
         return toStation;
     }
 
-
+    public int getNumOfTickets() {
+        return NumOfTickets;
+    }
 
 
     // Getters and setters...
