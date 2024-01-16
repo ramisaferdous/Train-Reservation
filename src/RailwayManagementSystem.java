@@ -1,49 +1,38 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class RailwayManagementSystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-//        private static List<Passenger> passengersCollection = new ArrayList<>();
 
-        // Create stations
-        System.out.print("Enter the name of Station A: ");
-        Station stationA = new Station(scanner.nextLine());
+        List<String> destinationNames = RandomGenerator.generateRandomDestinations();
+        RandomGenerator randomGenerator = new RandomGenerator();
 
-        System.out.print("Enter the name of Station B: ");
-        Station stationB = new Station(scanner.nextLine());
+        Station stationA = randomGenerator.createRandomStation(destinationNames);
+        Station stationB = randomGenerator.createRandomStation(destinationNames);
+        Station stationC = randomGenerator.createRandomStation(destinationNames);
 
-        System.out.print("Enter the name of Station C: ");
-        Station stationC = new Station(scanner.nextLine());
-
-        // Create route with stations
         List<Station> routeStations = new ArrayList<>();
         routeStations.add(stationA);
         routeStations.add(stationB);
         routeStations.add(stationC);
         Route route = new Route(routeStations);
 
-        // Create trains
         System.out.print("Enter the train number for Train 001: ");
         Train train1 = new Train(scanner.nextLine(), 200, route);
 
         System.out.print("Enter the train number for Train 002: ");
         Train train2 = new Train(scanner.nextLine(), 150, route);
 
-        // Create platforms
+
         Platform platform1 = new Platform(1);
         Platform platform2 = new Platform(2);
 
-        // Assign platforms to stations
         stationA.addPlatform(platform1);
         stationB.addPlatform(platform2);
 
-        // Create schedules with arrival timings
+
         Map<Station, LocalTime> arrivalTimingsTrain1 = getArrivalTimingsFromUser(scanner, "Train 001");
         Map<Station, LocalTime> arrivalTimingsTrain2 = getArrivalTimingsFromUser(scanner, "Train 002");
 
@@ -54,15 +43,12 @@ public class RailwayManagementSystem {
         Passenger passenger1 = createPassengerFromUserInput(scanner);
         Passenger passenger2 = createPassengerFromUserInput(scanner);
 
-        // Create tickets
+
         LocalDate journeyDate = LocalDate.of(2024, 1, 15);
         Ticket ticket1 = new Ticket(train1, passenger1, stationA, stationC, journeyDate, 50.0);
         Ticket ticket2 = new Ticket(train2, passenger2, stationB, stationC, journeyDate, 35.0);
 
-        // Perform any additional operations or display information as needed
-        // ...
 
-        // Example: Display ticket information
         System.out.println("\nTicket 1 Information:");
         displayTicketInformation(ticket1);
 
@@ -73,6 +59,9 @@ public class RailwayManagementSystem {
 
         scanner.close();
     }
+
+
+
 
     private static Map<Station, LocalTime> getArrivalTimingsFromUser(Scanner scanner, String trainNumber) {
         Map<Station, LocalTime> arrivalTimings = new HashMap<>();
