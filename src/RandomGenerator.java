@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Random;
 
 public  class RandomGenerator{
-    List<String> destinationNames = generateRandomDestinations();
+
 static Station createRandomStation(List<String> destinationNames) {
         if (destinationNames.isEmpty()) {
         throw new IllegalArgumentException("No destination names available.");
@@ -17,11 +17,12 @@ static Station createRandomStation(List<String> destinationNames) {
         }
     static List<String> generateRandomDestinations(){
         List<String> destinations = new ArrayList<>();
-        destinations.add("City1");
-        destinations.add("City2");
-        destinations.add("City3");
-        destinations.add("City4");
-        destinations.add("City5");
+        destinations.add("Chattogram");
+        destinations.add("Dhaka");
+        destinations.add("Cumilla");
+        destinations.add("Sylhet");
+        destinations.add("Rajshahi");
+        destinations.add("Rajshahi");
         return destinations;
     }
 }

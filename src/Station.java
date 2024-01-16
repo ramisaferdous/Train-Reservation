@@ -9,11 +9,6 @@ class Station {
         this.name = name;
         this.platforms = new ArrayList<>();
     }
-
-    public void addPlatform(Platform platform) {
-        this.platforms.add(platform);
-    }
-
     public String getName() {
         return name;
     }
