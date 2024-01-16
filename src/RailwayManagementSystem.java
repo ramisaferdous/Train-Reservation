@@ -68,6 +68,8 @@ public class RailwayManagementSystem {
 
         System.out.println("\nTicket 2 Information:");
         displayTicketInformation(ticket2);
+        displayCustomerData();
+
 
         scanner.close();
     }
@@ -86,13 +88,21 @@ public class RailwayManagementSystem {
     }
 
     private static Passenger createPassengerFromUserInput(Scanner scanner) {
+        scanner.nextLine();
+        System.out.print("Enter passenger ID: ");
+        String User_id = scanner.nextLine();
+
+
         System.out.print("Enter passenger name: ");
         String name = scanner.nextLine();
 
         System.out.print("Enter passenger contact number: ");
         String contactNumber = scanner.nextLine();
 
-        return new Passenger(name, contactNumber);
+        Passenger passenger = new Passenger(name, contactNumber,User_id);
+        Passenger.addToPassengersCollection(passenger);
+
+        return passenger;
     }
     public static void displayCustomerData() {
         Passenger passenger = new Passenger();
@@ -102,8 +112,9 @@ public class RailwayManagementSystem {
             System.out.println("No passengers added yet.");
         } else {
             for (Passenger customer : passenger.passengersCollection) {
-                System.out.println("Name: " + customer.getName() +
+                System.out.println("User_Id: "+customer.getID()+ ", Name: " + customer.getName() +
                         ", Contact Number: " + customer.getContactNumber());
+
             }
         }
     }
