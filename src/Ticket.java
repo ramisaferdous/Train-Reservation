@@ -7,7 +7,6 @@ class Ticket {
     private Station toStation;
     private LocalDate journeyDate;
     private double price;
-     private int NumOfTickets;
 
     public Ticket(Train train, Passenger passenger, Station fromStation, Station toStation, LocalDate journeyDate, double price) {
         this.train = train;
@@ -36,15 +35,9 @@ class Ticket {
     public Station getFromStation(){
         return fromStation;
     }
-
     public Station getToStation(){
         return toStation;
     }
 
-    public int getNumOfTickets() {
-        return NumOfTickets;
-    }
 
-
-    // Getters and setters...
 }

@@ -4,19 +4,18 @@ class Passenger {
     private String name;
     private String contactNumber;
     private String user_ID;
+    private String password;
     public static final List<Passenger> passengersCollection = RailwayManagementSystem.getCustomersCollection();
 
-    public Passenger() {
-
-    }
-    public Passenger(String name, String contactNumber,String user_ID) {
+    public Passenger(String name, String contactNumber,String user_ID,String password) {
         this.name = name;
         this.contactNumber = contactNumber;
         this.user_ID = user_ID;
-//        passengersCollection.add(new Passenger(name,contactNumber));
+        this.password= password;
+
     }
-    public static void addToPassengersCollection(Passenger passenger) {
-        passengersCollection.add(passenger);
+    public boolean checkPassword(String password) {
+        return this.password.equals(password);
     }
 
     public String getContactNumber() {

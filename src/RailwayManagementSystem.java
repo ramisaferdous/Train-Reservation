@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
-public class RailwayManagementSystem {
+public class RailwayManagementSystem  {
     private static final List<Passenger> passengersCollection = new ArrayList<>();
 
 
@@ -11,12 +11,18 @@ public class RailwayManagementSystem {
         scanner.nextLine();
         System.out.print("Enter passenger ID: ");
         String userId = scanner.nextLine();
+        if (findPassengerById(userId) != null) {
+            System.out.println("A passenger with this ID already exists. Please use a different ID.");
+            return;
+        }
         System.out.print("Enter passenger name: ");
         String name = scanner.nextLine();
         System.out.print("Enter passenger contact number: ");
         String contactNumber = scanner.nextLine();
+        System.out.print("Enter passenger password: ");
+        String password = scanner.nextLine();
 
-        Passenger passenger = new Passenger(name, contactNumber, userId);
+        Passenger passenger = new Passenger(name, contactNumber, userId,password);
         passengersCollection.add(passenger);
         System.out.println("Passenger created successfully!");
     }
@@ -26,10 +32,14 @@ public class RailwayManagementSystem {
         System.out.print("Enter passenger ID: ");
         String userId = scanner.nextLine();
 
+
+        System.out.print("Enter your password: ");
+        String password = scanner.nextLine();
+
         Passenger passenger = findPassengerById(userId);
 
-        if (passenger == null) {
-            System.out.println("Passenger not found. Please create an account first.");
+        if (passenger == null || !passenger.checkPassword(password)) {
+            System.out.println("Invalid login credentials. Please try again.");
             return;
         }
 
@@ -72,6 +82,7 @@ public class RailwayManagementSystem {
             System.out.println("Not enough seats available. Available seats: " + train.getAvailableSeats());
             return;
         }
+
         displayTicketPriceOptions();
         System.out.print("Enter the number for Ticket Price: ");
         int priceChoice = scanner.nextInt();
@@ -97,7 +108,10 @@ public class RailwayManagementSystem {
             return null;
         }
     }
-    private static void displayStationOptions(List<Station> stations) {
+
+
+
+    public static void displayStationOptions(List<Station> stations) {
         int index = 1;
         for (Station station : stations) {
             System.out.println(index + ". " + station.getName());

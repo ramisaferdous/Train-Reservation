@@ -12,7 +12,8 @@ public abstract class Train {
             availableSeats -= numberOfSeats;
             return true;
         }
-        return false;
+        else{
+        return false;}
     }
 
     public int getAvailableSeats() {
