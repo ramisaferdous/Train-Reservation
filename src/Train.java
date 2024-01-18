@@ -1,4 +1,4 @@
-public abstract class Train {
+public  class Train {
     protected final String trainNumber;
     protected int availableSeats;
 

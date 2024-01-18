@@ -38,13 +38,17 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    RailwayManagementSystem.createPassenger(scanner);
+                    PassengerService.createPassenger(scanner);
                     break;
                 case 2:
-                    RailwayManagementSystem.loginAndBookTicket(scanner, route);
+                    Passenger passenger = PassengerService.loginPassenger(scanner);
+                    if (passenger != null) {
+                        RailwayManagementSystem.bookTicket(scanner, route, passenger);
+                    }
+
                     break;
                 case 3:
-                    RailwayManagementSystem.displayAllPassengers();
+                    DisplayClass.displayAllPassengers();
                     break;
                 case 0:
                     System.out.println("Exiting Railway Management System. Goodbye!");
