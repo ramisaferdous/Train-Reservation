@@ -58,18 +58,45 @@ public class RailwayManagementSystem {
         String journeyDateStr = scanner.next();
         LocalDate journeyDate = LocalDate.parse(journeyDateStr);
 
+
+
+        Train train = selectTrainForRoute(scanner);
+        if (train == null) {
+            System.out.println("Invalid train selection.");
+            return;
+
+        }
+        System.out.print("Enter the number of seats to book: ");
+        int seatsToBook = scanner.nextInt();
+        if (!train.bookSeats(seatsToBook)) {
+            System.out.println("Not enough seats available. Available seats: " + train.getAvailableSeats());
+            return;
+        }
         displayTicketPriceOptions();
         System.out.print("Enter the number for Ticket Price: ");
         int priceChoice = scanner.nextInt();
-        double ticketPrice = getTicketPriceForChoice(priceChoice);
+        double ticketPrice = getTicketPriceForChoice(priceChoice, seatsToBook);
 
-        Train train = new Train("123");
 
         Ticket ticket = new Ticket(train, passenger, departureStation, destinationStation, journeyDate, ticketPrice);
         System.out.println("\nTicket Information:");
         displayTicketInformation(ticket);
     }
+    public static Train selectTrainForRoute(Scanner scanner) {
+        System.out.println("Select Train Type:");
+        System.out.println("1. Express Train");
+        System.out.println("2. Regional Train");
+        int choice = getUserInputIndex(2, scanner);
 
+        // Example train selection logic
+        if (choice == 1) {
+            return new ExpressTrain("EXP123", 200);
+        } else if (choice == 2) {
+            return new RegionalTrain("REG456", 150);
+        } else {
+            return null;
+        }
+    }
     private static void displayStationOptions(List<Station> stations) {
         int index = 1;
         for (Station station : stations) {
@@ -95,8 +122,9 @@ public class RailwayManagementSystem {
         System.out.println("2. $45");
     }
 
-    private static double getTicketPriceForChoice(int choice) {
-        return (choice == 1) ? 30.0 : 45.0;
+    private static double getTicketPriceForChoice(int choice, int numberOfSeats) {
+        double pricePerSeat = (choice == 1) ? 30.0 : 45.0;
+        return pricePerSeat * numberOfSeats;
     }
 
     public static void displayAllPassengers() {
