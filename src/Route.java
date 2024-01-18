@@ -12,9 +12,4 @@ class Route {
         return stations;
     }
 
-
-
-
-
-    // Getters and setters...
 }

@@ -3,65 +3,12 @@ import java.time.LocalTime;
 import java.util.*;
 
 public class RailwayManagementSystem {
-    private static List<Passenger> passengersCollection = new ArrayList<>();
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        List<String> destinationNames = RandomGenerator.generateRandomDestinations();
-
-        Station stationA = RandomGenerator.createRandomStation(destinationNames);
-        Station stationB = RandomGenerator.createRandomStation(destinationNames);
-        Station stationC = RandomGenerator.createRandomStation(destinationNames);
-        Station stationD = RandomGenerator.createRandomStation(destinationNames);
-        Station stationE = RandomGenerator.createRandomStation(destinationNames);
+    private static final List<Passenger> passengersCollection = new ArrayList<>();
 
 
 
-        List<Station> routeStations = new ArrayList<>();
-        routeStations.add(stationA);
-        routeStations.add(stationB);
-        routeStations.add(stationC);
-        routeStations.add(stationD);
-        routeStations.add(stationE);
-        Route route = new Route(routeStations);
-
-        System.out.println("Welcome to Railway Management System!");
-        int choice;
-
-        do {
-            System.out.println("\nMain Menu:");
-            System.out.println("1. Create Passenger");
-            System.out.println("2. Login As Passenger");
-            System.out.println("3. Show All Passengers");
-            System.out.println("0. Exit");
-            System.out.print("Enter your choice: ");
-            choice = scanner.nextInt();
-
-            switch (choice) {
-                case 1:
-                    createPassenger(scanner);
-                    break;
-                case 2:
-                    loginAndBookTicket(scanner, route);
-                    break;
-                case 3:
-                    displayAllPassengers();
-                    break;
-                case 0:
-                    System.out.println("Exiting Railway Management System. Goodbye!");
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please enter a valid option.");
-                    break;
-            }
-        } while (choice != 0);
-
-        scanner.close();
-    }
-
-    private static void createPassenger(Scanner scanner) {
-        scanner.nextLine();  // Consume newline character
+    public static void createPassenger(Scanner scanner) {
+        scanner.nextLine();
         System.out.print("Enter passenger ID: ");
         String userId = scanner.nextLine();
         System.out.print("Enter passenger name: ");
@@ -74,8 +21,8 @@ public class RailwayManagementSystem {
         System.out.println("Passenger created successfully!");
     }
 
-    private static void loginAndBookTicket(Scanner scanner, Route route) {
-        scanner.nextLine();  // Consume newline character
+    public static void loginAndBookTicket(Scanner scanner, Route route) {
+        scanner.nextLine();
         System.out.print("Enter passenger ID: ");
         String userId = scanner.nextLine();
 
@@ -152,7 +99,7 @@ public class RailwayManagementSystem {
         return (choice == 1) ? 30.0 : 45.0;
     }
 
-    private static void displayAllPassengers() {
+    public static void displayAllPassengers() {
         System.out.println("\nAll Passengers:");
         if (passengersCollection.isEmpty()) {
             System.out.println("No passengers added yet.");
