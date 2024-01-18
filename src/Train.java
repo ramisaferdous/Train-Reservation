@@ -1,4 +1,4 @@
-public  class Train {
+public class Train implements ITrain {
     protected final String trainNumber;
     protected int availableSeats;
 
@@ -7,19 +7,21 @@ public  class Train {
         this.availableSeats = availableSeats;
     }
 
+    @Override
     public boolean bookSeats(int numberOfSeats) {
         if (numberOfSeats <= availableSeats) {
             availableSeats -= numberOfSeats;
             return true;
         }
-        else{
-        return false;}
+        return false;
     }
 
+    @Override
     public int getAvailableSeats() {
         return availableSeats;
     }
 
+    @Override
     public String getTrainNumber() {
         return trainNumber;
     }
