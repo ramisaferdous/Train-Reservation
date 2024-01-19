@@ -43,6 +43,7 @@ public class RailwayManagementSystem  {
 
         System.out.print("Enter the number of seats to book: ");
         int seatsToBook = scanner.nextInt();
+
         if (!train.bookSeats(seatsToBook)) {
             System.out.println("Not enough seats available. Available seats: " + train.getAvailableSeats());
             return;
