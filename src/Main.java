@@ -45,9 +45,8 @@ public class Main {
                     if (passenger != null) {
                         RailwayManagementSystem.bookTicket(scanner, route, passenger);
                     }
-
                     break;
-                case 3:
+             case 3:
                     DisplayClass display=new DisplayClass();
                     display.displayAllPassengers();
                     break;

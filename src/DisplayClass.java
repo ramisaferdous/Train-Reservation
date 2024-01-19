@@ -26,6 +26,7 @@ public class DisplayClass {
         }
     }
     static void displayTicketInformation(Ticket ticket) {
+        System.out.println(" Ticket Information: " );
         System.out.println("Train Number: " + ticket.getTrain().getTrainNumber());
         System.out.println("Passenger Name: " + ticket.getPassenger().getName());
         System.out.println("From Station: " + ticket.getFromStation().getName());
