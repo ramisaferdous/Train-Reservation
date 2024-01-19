@@ -48,7 +48,8 @@ public class Main {
 
                     break;
                 case 3:
-                    DisplayClass.displayAllPassengers();
+                    DisplayClass display=new DisplayClass();
+                    display.displayAllPassengers();
                     break;
                 case 0:
                     System.out.println("Exiting Railway Management System. Goodbye!");

@@ -7,7 +7,7 @@ public class RailwayManagementSystem  {
     private static final Scanner scanner = new Scanner(System.in);
     private static final PassengerService passengerService = new PassengerService(passengersCollection, scanner);
 
-
+static DisplayClass display = new DisplayClass();
 
 
 
@@ -16,7 +16,7 @@ public class RailwayManagementSystem  {
     public static void bookTicket(Scanner scanner, Route route, Passenger passenger) {
         System.out.println("\nBooking Ticket:");
         System.out.println("Select Departure Station:");
-        DisplayClass.displayStationOptions(route.getStations());
+        display.displayStationOptions(route.getStations());
 
         System.out.print("Enter the number for Departure Station: ");
         int departureIndex = PassengerService.getUserInputIndex(route.getStations().size(), scanner);
@@ -25,7 +25,7 @@ public class RailwayManagementSystem  {
         System.out.println("\nSelect Destination Station:");
         List<Station> destinationOptions = new ArrayList<>(route.getStations());
         destinationOptions.remove(departureStation);
-        DisplayClass.displayStationOptions(destinationOptions);
+        display.displayStationOptions(destinationOptions);
 
         System.out.print("Enter the number for Destination Station: ");
         int destinationIndex = PassengerService.getUserInputIndex(destinationOptions.size(), scanner);
@@ -49,13 +49,13 @@ public class RailwayManagementSystem  {
             return;
         }
 
-        DisplayClass.displayTicketPriceOptions();
+        display.displayTicketPriceOptions();
         System.out.print("Enter the number for Ticket Price: ");
         int priceChoice = scanner.nextInt();
         double ticketPrice = getTicketPriceForChoice(priceChoice, seatsToBook);
 
         Ticket ticket = new Ticket(train, passenger, departureStation, destinationStation, journeyDate, ticketPrice);
-        DisplayClass.displayTicketInformation(ticket);
+        display.displayTicketInformation(ticket);
     }
 
     public static Train selectTrainForRoute(Scanner scanner) {
