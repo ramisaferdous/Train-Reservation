@@ -5,8 +5,6 @@ class Passenger {
     private String contactNumber;
     private String user_ID;
     private String password;
-    public static final List<Passenger> passengersCollection = RailwayManagementSystem.getCustomersCollection();
-
     public Passenger(String name, String contactNumber,String user_ID,String password) {
         this.name = name;
         this.contactNumber = contactNumber;
@@ -30,5 +28,4 @@ class Passenger {
         return user_ID;
     }
 
-    // Getters and setters...
 }

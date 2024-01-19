@@ -74,7 +74,6 @@ static DisplayClass display = new DisplayClass();
         }
     }
 
-
     private static double getTicketPriceForChoice(int choice, int numberOfSeats) {
         double pricePerSeat = (choice == 1) ? 30.0 : 45.0;
         return pricePerSeat * numberOfSeats;
@@ -90,8 +89,6 @@ static DisplayClass display = new DisplayClass();
         }
         return null;
     }
-
-
 
     public static List<Passenger> getCustomersCollection() {
         return passengersCollection;

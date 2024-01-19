@@ -17,8 +17,6 @@ class Ticket {
         this.price = price;
     }
 
-
-
     public LocalDate getJourneyDate() {
         return journeyDate;
     }

@@ -6,7 +6,6 @@ public abstract class Train implements ITrain {
         this.trainNumber = trainNumber;
         this.availableSeats = availableSeats;
     }
-
     public int getAvailableSeats() {
         return availableSeats;
     }
