@@ -80,7 +80,6 @@ static DisplayClass display = new DisplayClass();
     }
 
 
-
     static Passenger findPassengerById(String userId) {
         for (Passenger passenger : passengersCollection) {
             if (passenger.getID().equals(userId)) {
@@ -90,7 +89,4 @@ static DisplayClass display = new DisplayClass();
         return null;
     }
 
-    public static List<Passenger> getCustomersCollection() {
-        return passengersCollection;
-    }
 }
